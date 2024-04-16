@@ -272,14 +272,14 @@
     margin: 2px;
 }
 
-input:checked + .btn{
+input#on:checked + .btn{
     background-color: #333;
 }
 
-input:checked + .btn::before{
+input#on:checked + .btn::before{
     transform: translateX(25px);
 }
 
-input{
+input#on{
     display: none;
 }
