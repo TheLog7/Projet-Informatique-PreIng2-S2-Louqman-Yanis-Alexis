@@ -33,6 +33,8 @@ Pour tester le code, il est nécessaire d'avoir une base de données :
   
   ![Screenshot 2024-04-17 010156](https://github.com/TheLog7/Projet-Informatique-PreIng2-S2-Louqman-Yanis-Alexis/assets/130991034/92ab9b76-94d9-4071-a295-f1bd8d30894a)
 
-  - 
+  - On peut aller sur le site, s'inscire et observer que les données sont enregisrées
+
+  ![Screenshot 2024-04-17 010604](https://github.com/TheLog7/Projet-Informatique-PreIng2-S2-Louqman-Yanis-Alexis/assets/130991034/b05df727-b26a-4f8a-9fff-63cb0fb7e522)
 
 Merci à Liam Tardieu pour son support sur le PHP
