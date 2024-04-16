@@ -24,7 +24,11 @@ Pour tester le code, il est nécessaire d'avoir une base de données :
   - On a créé la base de donnée "test"
   
   ![Screenshot 2024-04-17 005827](https://github.com/TheLog7/Projet-Informatique-PreIng2-S2-Louqman-Yanis-Alexis/assets/130991034/4296bf39-bb47-480b-8ef7-a6e6ecc54a7b)
-  
+
+  ![Screenshot 2024-04-17 010127](https://github.com/TheLog7/Projet-Informatique-PreIng2-S2-Louqman-Yanis-Alexis/assets/130991034/68801c93-11f2-4c77-8875-1d9f7a6322fd)
+
+  ![Screenshot 2024-04-17 010156](https://github.com/TheLog7/Projet-Informatique-PreIng2-S2-Louqman-Yanis-Alexis/assets/130991034/92ab9b76-94d9-4071-a295-f1bd8d30894a)
+
   - 
 
 Merci à Liam Tardieu pour son support sur le PHP
