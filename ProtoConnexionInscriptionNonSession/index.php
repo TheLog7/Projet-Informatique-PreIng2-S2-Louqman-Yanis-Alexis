@@ -63,7 +63,7 @@ if ($error === 'email_exists') {
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script_index.js"></script>
 </body>
 
 </html>

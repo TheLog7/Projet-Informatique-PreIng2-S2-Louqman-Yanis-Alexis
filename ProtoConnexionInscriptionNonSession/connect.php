@@ -19,9 +19,10 @@
         $req = mysqli_query($conn , "SELECT * FROM profil WHERE mail = '$email' AND mdp ='$mdp' ") ;
         $num_ligne = mysqli_num_rows($req) ;//Compter le nombre de ligne ayant rapport a la requette SQL
         if($num_ligne > 0){
-            header("Location:test.php") ;//Si le nombre de ligne est > 0 , on sera redirigé vers la page bienvenu
+            header("Location:profil.php") ;//Si le nombre de ligne est > 0 , on sera redirigé vers la page bienvenu
             // Nous allons créer une variable de type session qui vas contenir l'email de l'utilisateur
-            $_SESSION['email'] = $email ;
+            $_SESSION['email'] = $email;
+            $_SESSION['mdp'] = $mdp;
         }else {//si non
             $erreur = "Adresse Mail ou Mots de passe incorrectes !";
         }
