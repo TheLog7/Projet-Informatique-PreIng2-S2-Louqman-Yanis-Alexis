@@ -2,7 +2,6 @@
  //Nous allons démarrer la session avant toute chose
     session_start() ;
     $json = 0;
-    $file_exist = false;
     $account_exist = false;
     $id = 1;
     if(isset($_POST['boutton-valider'])){ // Si on clique sur le boutton , alors :
@@ -14,29 +13,17 @@
             $erreur = "" ;
             //Nous allons verifier si les informations entrée sont correctes
             //Connexion a la base de données
-            if(file_exists('donnees.json')){
-                $json = json_decode(file_get_contents('donnees.json'), true);
-                $file_exist = true;
+            if(file_exists('./Comptes/'.$email.'.json')){
+                $json = json_decode(file_get_contents('./Comptes/'.$email.'.json'), true);
+                $account_exist = true;
             }
             else{
                 $erreur = "Adresse Mail ou Mots de passe incorrectes !";
             }
             //requete pour selectionner  l'utilisateur qui a pour email et mot de passe les identifiants qui ont été entrées
-            if ($erreur == ""){
-                foreach ($json as $key => $value) {
-                    if ($value['mail'] == $email && $value['mdp'] == $mdp) {
-                        $account_exist = true;
-                        setcookie("Utilisateur".$id, $value['nom']);
-                        break;
-                    }
-                    $id ++;
-                }
-            }
-            if($account_exist){
-                header("Location:test.php");
-            }
-            else{
-                $erreur = "Adresse Mail ou Mots de passe incorrectes !";
+            if ($erreur == "" && $json['mail'] == $email && $json['mdp'] == $mdp){
+                    header("Location:test.php");
+                    $erreur = "Adresse Mail ou Mots de passe incorrectes !";
             }
         }
     }
