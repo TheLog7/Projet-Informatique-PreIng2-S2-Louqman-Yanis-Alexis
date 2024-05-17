@@ -42,7 +42,7 @@
 </head>
 <body>
    <section>
-       <h1> Connexion</h1>
+       <h1> Connexion </h1>
        <?php 
        if(isset($erreur)){// si la variable $erreur existe , on affiche le contenu ;
            echo "<p class= 'Erreur'>".$erreur."</p>"  ;
