@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION['mail'])){
+    header("Location:test.php");
+}
+
 // Récupération du paramètre d'erreur de l'URL
 $error = $_GET['error'] ?? '';
 

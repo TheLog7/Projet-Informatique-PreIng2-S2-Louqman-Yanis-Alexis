@@ -1,11 +1,6 @@
 <?php
     session_start();
     echo 'Bonjour '. $_SESSION['nom']. '<br> Voici votre adresse mail : '. $_SESSION['mail'];
-    if(isset($_POST['logout'])){
-        session_unset();
-        session_destroy();
-        header("Location:index.php");
-    }
     if(isset($_POST['recherche'])){
         header("Location:search.php");
     }
@@ -22,7 +17,7 @@
 <body>
     <div>
     <h1> Accueil</h1>
-    <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+    <form action="logout.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
         <input type="submit" value="Deconnexion" name="logout">
     </form>
     </div>

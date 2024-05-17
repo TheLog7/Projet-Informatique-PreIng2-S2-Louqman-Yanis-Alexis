@@ -3,28 +3,36 @@
     session_start();
     $json = 0;
     $account_exist = false;
-    if(isset($_POST['boutton-valider'])){ // Si on clique sur le boutton , alors :
-        //Nous allons verifiér les informations du formulaire
-        if(isset($_POST['email']) && isset($_POST['mdp'])) { //On verifie ici si l'utilisateur a rentré des informations
-            //Nous allons mettres l'email et le mot de passe dans des variables
-            $email = $_POST['email'] ;
-            $mdp = $_POST['mdp'] ;
-            $erreur = "" ;
-            //Nous allons verifier si les informations entrée sont correctes
-            //Connexion a la base de données
-            if(file_exists('./Comptes/'.$email.'.json')){
-                $json = json_decode(file_get_contents('./Comptes/'.$email.'.json'), true);
-                $account_exist = true;
-            }
-            else{
-                $erreur = "Adresse Mail ou Mots de passe incorrectes !";
-            }
-            //requete pour selectionner  l'utilisateur qui a pour email et mot de passe les identifiants qui ont été entrées
-            if ($erreur == "" && $json['mail'] == $email && $json['mdp'] == $mdp){
-                    header("Location:test.php?id_session=".session_id());
-            }
-            else{
-                $erreur = "Adresse Mail ou Mots de passe incorrectes !";
+    if (isset($_SESSION['mail'])){
+        header("Location:test.php");
+    }
+    else{
+        if(isset($_POST['boutton-valider'])){ // Si on clique sur le boutton , alors :
+            //Nous allons verifiér les informations du formulaire
+            if(isset($_POST['email']) && isset($_POST['mdp'])) { //On verifie ici si l'utilisateur a rentré des informations
+                //Nous allons mettres l'email et le mot de passe dans des variables
+                $email = $_POST['email'] ;
+                $mdp = $_POST['mdp'] ;
+                $erreur = "" ;
+                //Nous allons verifier si les informations entrée sont correctes
+                //Connexion a la base de données
+                if(file_exists('./Comptes/'.$email.'.json')){
+                    $json = json_decode(file_get_contents('./Comptes/'.$email.'.json'), true);
+                    $account_exist = true;
+                }
+                else{
+                    $erreur = "Adresse Mail ou Mots de passe incorrectes !";
+                }
+                //requete pour selectionner  l'utilisateur qui a pour email et mot de passe les identifiants qui ont été entrées
+                if ($erreur == "" && $json['mail'] == $email && $json['mdp'] == $mdp){
+                        $_SESSION['mail'] = $json['mail'];
+                        $_SESSION['nom'] = $json['nom'];
+                        $_SESSION['mdp'] = $json['mdp'];
+                        header("Location:test.php");
+                }
+                else{
+                    $erreur = "Adresse Mail ou Mots de passe incorrectes !";
+                }
             }
         }
     }
