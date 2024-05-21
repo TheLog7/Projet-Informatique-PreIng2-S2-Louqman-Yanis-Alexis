@@ -1,6 +1,9 @@
 <?php
     session_start();
-    echo 'Bonjour '. $_SESSION['nom']. '<br> Voici votre adresse mail : '. $_SESSION['mail'];
+    echo "Bonjour {$_SESSION['nom']} <br> Voici votre adresse mail : {$_SESSION['mail']} <br> Vous etes né le {$_SESSION['birthday']}";
+    if(isset($_POST['profil'])){
+        header("Location:profil.php");
+    }
     if(isset($_POST['recherche'])){
         header("Location:search.php");
     }
@@ -26,6 +29,10 @@
             <input type="submit" value="Recherche" name="recherche">
         </form>
     </div>
-
+    <div class="info-profil">
+        <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+            <input type="submit" value="Profil" name="profil">
+        </form>
+    </div>
 </body>
 </html>

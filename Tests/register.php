@@ -1,6 +1,8 @@
 <?php
     // Vérification si le formulaire a été soumis
-    session_start();
+    require 'session_setup.php';
+    $id = 0;
+    $infos = 0;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $r_name = $_POST["r_name"];
         $r_mail = $_POST["r_mail"];
@@ -8,13 +10,19 @@
         if($r_mail != '' && $r_name != '' && $r_password != ''){
             if(!file_exists('Comptes')){
                 mkdir('Comptes');
+                file_put_contents('./Comptes/users.json', '');
             }
             if(!file_exists('./Comptes/'.$r_mail.'.json')){
-                file_put_contents('./Comptes/'.$r_mail.'.json', json_encode(array('mail' => $r_mail, 'mdp' => $r_password, 'nom' => $r_name)));
-                $_SESSION['mail'] = $r_mail;
-                $_SESSION['nom'] = $r_name;
-                $_SESSION['mdp'] = $r_password;
-                header("Location:test.php");
+                $users = json_decode(file_get_contents('./Comptes/users.json'));
+                while (isset($users[$id])){
+                    $id ++;
+                }
+                $users[$id] = array('name' => $r_name, 'mail' => $r_mail);
+                $infos = array('mail' => $r_mail, 'mdp' => $r_password, 'nom' => $r_name);
+                file_put_contents('./Comptes/'.$r_mail.'.json', json_encode($infos));
+                file_put_contents('./Comptes/users.json', json_encode($users));
+                session_setup(1, $infos);
+                header("Location:register_part2.php");
             }
             else {
                 header("Location: index.php?error=email_exist");

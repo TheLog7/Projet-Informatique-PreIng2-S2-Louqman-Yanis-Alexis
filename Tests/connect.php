@@ -1,6 +1,6 @@
 <?php 
  //Nous allons démarrer la session avant toute chose
-    session_start();
+    require 'session_setup.php';
     $json = 0;
     $account_exist = false;
     if (isset($_SESSION['mail'])){
@@ -25,9 +25,7 @@
                 }
                 //requete pour selectionner  l'utilisateur qui a pour email et mot de passe les identifiants qui ont été entrées
                 if ($erreur == "" && $json['mail'] == $email && $json['mdp'] == $mdp){
-                        $_SESSION['mail'] = $json['mail'];
-                        $_SESSION['nom'] = $json['nom'];
-                        $_SESSION['mdp'] = $json['mdp'];
+                        session_setup(3, $json);
                         header("Location:test.php");
                 }
                 else{
