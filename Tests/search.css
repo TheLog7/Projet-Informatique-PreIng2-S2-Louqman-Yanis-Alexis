@@ -1,3 +1,15 @@
+:root{
+  --meetube_color: #a42da8;
+}
+
+.body-light{
+  background-color: var(--meetube_color);
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .search-wrapper {
     display: flex;
     flex-direction: column;
@@ -20,9 +32,10 @@
   }
   
   .card {
-    border: 1px solid black;
-    background-color: white;
+    border: 2px solid var(--meetube_color);
     padding: .5rem;
+    border-radius: 5%;
+    background-color:rgba(235, 236, 236, 0.966);  
   }
   
   .card > .header {

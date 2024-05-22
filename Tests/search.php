@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="search.css">
     <title>bienvenue</title>
 </head>
-<body>
+<body class="body-light">
     <h1> Accueil</h1>
 
     <div>
