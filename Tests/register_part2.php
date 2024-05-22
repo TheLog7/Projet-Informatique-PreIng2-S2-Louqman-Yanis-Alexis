@@ -1,12 +1,37 @@
 <?php // a completer
 require_once 'session_setup.php';
+$id = 0;
+
+function calculerAge($dateNaissance) {
+    // Convertir les dates en objets DateTime
+    $dateNaissance = new DateTime($dateNaissance);
+    $dateAujourdhui = new DateTime();
+
+    // Calculer la différence entre les deux dates
+    $difference = $dateNaissance->diff($dateAujourdhui);
+
+    // Récupérer l'âge à partir de la différence
+    $age = $difference->y;
+
+    return $age;
+}
+
 if (isset($_POST['sent'])){
     $json = json_decode(file_get_contents("./Comptes/{$_SESSION['mail']}.json"), true);
-    $json['genre'] = $_POST['Genre'];
-    $json['birthday'] = $_POST['birthday'];
+    $json['genre'] = $_POST['genre'];
+    $json['birthday'] = calculerAge($_POST['birthday']);
     $json['ytb_video'] = $_POST['ytb_video'];
     session_setup(2, $json);
     file_put_contents("./Comptes/{$_SESSION['mail']}.json", json_encode($json));
+    $users = json_decode(file_get_contents('./Comptes/users.json'), true);
+    while (isset($users[$id])){
+        $id ++;
+    }
+    $id --;
+    $users[$id]['ytb_video'] = $_POST['ytb_video']; 
+    $users[$id]['genre'] = $_POST['genre'];
+    $users[$id]['birthday'] = $_POST['birthday'];
+    file_put_contents('./Comptes/users.json', json_encode($users));
     header("Location:test.php");
 }
 ?>
@@ -24,7 +49,7 @@ if (isset($_POST['sent'])){
     <h1> Un peu plus sur vous :</h1>
     <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
         <label>Vous etes :</label>
-        <select name="Genre" required>
+        <select name="genre" required>
             <option value="homme"> un homme</option>
             <option value="femme">une femme</option>
         </select>

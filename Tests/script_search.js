@@ -21,6 +21,7 @@ fetch("Comptes/users.json")
       const card = userCardTemplate.content.cloneNode(true).children[0]
       const header = card.querySelector("[data-header]")
       const body = card.querySelector("[data-body]")
+      const video = card.querySelector("[data-video]")
       header.textContent = user.name
       body.textContent = user.mail
       userCardContainer.append(card)

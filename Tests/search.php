@@ -1,4 +1,9 @@
 <?php
+
+    if(isset($_POST['profil'])){
+        header("Location:profil.php");
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +24,12 @@
         </form>
     </div>
 
+    <div class="info-profil">
+        <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+            <input type="submit" value="Profil" name="profil">
+        </form>
+    </div>
+
     <div class="search-wrapper">
     <label for="search">Search Users</label>
     <input type="search" id="search" data-search>
@@ -30,10 +41,43 @@
         <div class="card">
         <div class="header" data-header></div>
         <div class="body" data-body></div>
+        <div class="video" data-video></div>
         </div>
     </template>
 
-    <script src="script_search.js"></script>
+    <script>
+        const userCardTemplate = document.querySelector("[data-user-template]")
+        const userCardContainer = document.querySelector("[data-user-cards-container]")
+        const searchInput = document.querySelector("[data-search]")
+
+        let users = []
+
+        searchInput.addEventListener("input", e => {
+        const value = e.target.value.toLowerCase()
+        users.forEach(user => {
+            const isVisible =
+            user.name.toLowerCase().includes(value) ||
+            user.mail.toLowerCase().includes(value)
+            user.element.classList.toggle("hide", !isVisible)
+        })
+        })
+
+        fetch("Comptes/users.json")
+        .then(res => res.json())
+        .then(data => {
+            users = data.map(user => {
+            const card = userCardTemplate.content.cloneNode(true).children[0]
+            const header = card.querySelector("[data-header]")
+            const body = card.querySelector("[data-body]")
+            const video = card.querySelector("[data-video]")
+            header.textContent = user.name
+            body.textContent = user.mail
+            video.textContent = user.ytb_video
+            userCardContainer.append(card)
+            return { name: user.name, mail: user.mail, ytb_video: user.ytb_video, element: card }
+            })
+        })
+    </script>
 </body>
 </html>
 
