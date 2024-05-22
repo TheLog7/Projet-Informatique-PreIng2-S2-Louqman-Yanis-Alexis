@@ -9,10 +9,14 @@
   }
   
   .user-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    display: flex; 
+    flex-basis: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
     gap: .25rem;
     margin-top: 1rem;
+    break-inside: avoid;
   }
   
   .card {
