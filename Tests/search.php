@@ -72,7 +72,20 @@
             const video = card.querySelector("[data-video]")
             header.textContent = user.name
             body.textContent = user.mail
-            video.textContent = user.ytb_video
+            const videoUrl = user.ytb_video;
+            const videoId = getVideoId(videoUrl);
+            const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            video.innerHTML = `<iframe width="450" height="253" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+
+            function getVideoId(url) {
+                const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/watch\?v=|https?:\/\/youtu\.be\/)([\w-]+)/;
+                const match = url.match(regex);
+                if (match) {
+                    return match[1];
+                }
+                return null;
+            }
+
             userCardContainer.append(card)
             return { name: user.name, mail: user.mail, ytb_video: user.ytb_video, element: card }
             })
