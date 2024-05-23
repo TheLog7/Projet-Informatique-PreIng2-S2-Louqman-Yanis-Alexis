@@ -46,6 +46,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="connect.css">
+    <link rel="icon" href="icon_titre.ico" type="image/gif">
 </head>
 <body class="body-light">
     <div class="title" id="titre_sign-in">
@@ -59,7 +60,7 @@
         ?>
         <div class="sign-in">
             <form class="login-bloc" action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
-                <label id="adressemail">Adresse Mail</label>
+                <label id="motdepasse">Adresse Mail</label>
                 <br>
                 <input type="email" name="email">
                 <br>

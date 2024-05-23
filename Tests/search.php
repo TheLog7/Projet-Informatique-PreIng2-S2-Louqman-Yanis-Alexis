@@ -20,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="search.css">
     <title>bienvenue</title>
+    <link rel="icon" href="icon_titre.ico" type="image/gif">
 </head>
 <body class="body-light">
     <h1> Accueil</h1>
