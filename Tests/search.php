@@ -23,22 +23,24 @@
     <link rel="icon" href="icon_titre.ico" type="image/gif">
 </head>
 <body class="body-light">
-    <h1> Accueil</h1>
-
+    <div class="title" id="titre_sign-in">
+        <h1 id="moving-text">Recherche</h1>
+    </div>
+    <br>
+    <div class="info-profil">
+        <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+            <input type="submit" value="Mon Profil" name="profil">
+        </form>
+    </div>
+    <br>
     <div>
         <form action="logout.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
             <input type="submit" value="Deconnexion" name="logout">
         </form>
     </div>
-
-    <div class="info-profil">
-        <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
-            <input type="submit" value="Profil" name="profil">
-        </form>
-    </div>
+    <br>
 
     <div class="search-wrapper">
-    <label for="search">Search Users</label>
     <input type="search" id="search" data-search>
     </div>
 
@@ -92,12 +94,34 @@
                 }
                 return null;
             }
+            
+            card.addEventListener("click", () => {
+                const user = users.find(u => u.element === card);
+                const formData = new FormData();
+                formData.append('name', user.name);
+                formData.append('mail', user.mail);
+                formData.append('ytb_video', user.ytb_video);
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'profil_visit.php';
+                form.style.display = 'none';
+                for (const [key, value] of formData.entries()) {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = value;
+                    form.appendChild(input);
+                }
+                document.body.appendChild(form);
+                form.submit();
+            });
 
             userCardContainer.append(card)
             return { name: user.name, mail: user.mail, ytb_video: user.ytb_video, element: card }
             })
         })
     </script>
+    <script src="script_search.js"></script>
 </body>
 </html>
 

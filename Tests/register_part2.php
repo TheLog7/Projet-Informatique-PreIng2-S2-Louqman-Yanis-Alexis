@@ -52,8 +52,8 @@ if (isset($_POST['sent'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Un peu plus sur vous</title>
-    <link rel="stylesheet" href="register_part2.css">
     <link rel="icon" href="icon_titre.ico" type="image/gif">
+    <link rel="stylesheet" href="register_part2.css">
 </head>
 <body class="body-light">
     <div class="title" id="titre_sign-in">
@@ -98,15 +98,15 @@ if (isset($_POST['sent'])){
                 <br>
                 <label>La couleur de vos cheveux :</label>
                 <input type="text" name="hairs">
-                <br>
+                <label>Je cherche :</label>
                 <select name="wish" required>
                     <option value="Plan cul"> Plan cul </option>
                     <option value="Serieux"> Sérieux </option>
                     <option value="Pas de prise de tete"> Pas de prise de tete </option>
-                    <option value="Coup d'un soir"> Coup d'un soir </option>
+                    <option value="je ne sais pas"> Coup d'un soir </option>
                 </select>
                 <br>
-                <input type="submit" value="Valider" name="sent">
+                <input id="valider" type="submit" value="Valider" name="sent">
 
             </form>
         </div>
