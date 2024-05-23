@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (!isset($_SESSION['nom'])) {
+        header("Location: index.php");
+        exit;
+    }
     echo "Bonjour {$_SESSION['nom']} <br> Voici votre adresse mail : {$_SESSION['mail']} <br> Vous etes {$_SESSION['situation']} et vous avez les yeux {$_SESSION['eyes']}";
     if(isset($_POST['profil'])){
         header("Location:profil.php");

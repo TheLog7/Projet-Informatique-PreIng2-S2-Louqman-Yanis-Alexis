@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    if (!isset($_SESSION['nom'])) {
+        header("Location: index.php");
+        exit;
+    }
 
     if(isset($_POST['profil'])){
         header("Location:profil.php");

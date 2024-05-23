@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION['nom'])) {
+        header("Location: index.php");
+        exit;
+    }
+
     if(isset($_POST['recherche'])){
         header("Location:search.php");
     }
