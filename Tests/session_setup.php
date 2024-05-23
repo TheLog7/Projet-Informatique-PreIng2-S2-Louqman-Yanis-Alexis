@@ -10,6 +10,16 @@ function session_setup($key, $file)
     if($key == 2 || $key == 3){
         $_SESSION['genre'] = $file['genre'];
         $_SESSION['birthday'] = $file['birthday'];
+        $_SESSION['age'] = $file ['age'];
         $_SESSION['ytb_video'] = $file['ytb_video'];
+        $_SESSION['work'] = $file['work'];
+        $_SESSION['address'] = $file['address'];
+        $_SESSION['height'] = $file['height'];
+        $_SESSION['weight'] = $file['weight'];
+        $_SESSION['eyes'] = $file['eyes'];
+        $_SESSION['situation'] = $file['situation'];
+        $_SESSION['hairs'] = $file['hairs'];
+        $_SESSION['wish'] = $file['wish'];
+
     }
 }

@@ -44,27 +44,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire de connexion</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="connect.css">
+    <link rel="icon" href="icon_titre.ico" type="image/gif">
 </head>
-<body>
-   <section>
-       <h1> Connexion</h1>
-       <?php 
-       if(isset($erreur)){// si la variable $erreur existe , on affiche le contenu ;
-           echo "<p class= 'Erreur'>".$erreur."</p>"  ;
-       }
-       ?>
-       <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
-           <label>Adresse Mail</label>
-           <input type="email" name="email">
-           <label >Mots de Passe</label>
-           <input type="password" name="mdp">
-           <input type="submit" value="Valider" name="boutton-valider">
-       </form>
-   </section> 
-   <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
-        <input type="submit" value="Retour" name="retour">
-   </form>
+<body class="body-light">
+    <div class="title" id="titre_sign-in">
+        <h1 id="moving-text">Connexion</h1>
+    </div>
+    <section>
+        <?php 
+            if(isset($erreur)){// si la variable $erreur existe , on affiche le contenu ;
+                echo "<p class= 'Erreur'>".$erreur."</p>"  ;
+            }
+        ?>
+        <div class="sign-in">
+            <form class="login-bloc" action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                <label id="motdepasse">Adresse Mail</label>
+                <br>
+                <input type="email" name="email">
+                <br>
+                <label id="motdepasse">Mots de Passe</label>
+                <br>
+                <input type="password" name="mdp">
+                <br>
+                <input type="submit" value="Valider" name="boutton-valider">
+            </form>
+        </div>
+    </section> 
+    <form class="btn" action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+            <input type="submit" value="Retour" name="retour">
+    </form>
+    <script src="script_connect.js"></script>
 </body>
 </html>
