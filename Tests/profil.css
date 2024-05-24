@@ -1,0 +1,42 @@
+:root{
+    --meetube_color: #a42da8;
+  }
+  
+  .body-light{
+    background-color: var(--meetube_color);
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.left-column {
+    background-color: #e7e7e7;
+    border-top-right-radius: 5%;
+    border-bottom-right-radius: 5%;
+    border: solid;
+    border-color: var(--meetube_color);
+}
+
+.right-column {
+    background-color: #e2e2e2;
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border: solid;
+    border-color: var(--meetube_color);
+}
