@@ -11,6 +11,9 @@
     if(isset($_POST['recherche'])){
         header("Location:search.php");
     }
+    if(isset($_POST['chat'])){
+        header("Location:chat_index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +41,11 @@
     <div class="info-profil">
         <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
             <input type="submit" value="Profil" name="profil">
+        </form>
+    </div>
+    <div class="chat">
+        <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+            <input type="submit" value="Chat" name="chat">
         </form>
     </div>
 </body>
