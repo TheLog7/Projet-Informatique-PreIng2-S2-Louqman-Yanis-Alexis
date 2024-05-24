@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --meetube_color: #a42da8;
+  }
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+  
+  .body-light{
+    background-color: var(--meetube_color);
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.left-column {
+    background-color: #e7e7e7;
+    border-top-right-radius: 5%;
+    border-bottom-right-radius: 5%;
+    border: solid;
+    border-color: var(--meetube_color);
+}
+
+.right-column {
+    background-color: #e2e2e2;
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border: solid;
+    border-color: var(--meetube_color);
+}
+
+div#result {
+    flex-direction: column;
+    align-items: right;
+    justify-content: right;
+    height: 100%;
+    max-height: 700px;
+    overflow-y: auto;
+    background-color: #f0f0f0;
+    border: solid;
+    border-color: var(--meetube_color);
+    padding: 20px;
+}
+
+div#result #user1 {
+    padding: 10px;
+    border: solid;
+    border-color: cyan;
+    border-radius: 5%;
+    background-color: #fafafa;
+}
+
+div#result #user2 {
+    padding: 10px;
+    border: solid;
+    border-color: green;
+    border-radius: 5%;
+    background-color: #fafafa;
+}
+
+div#result p {
+    padding: 5px;
+    border: solid;
+    border-color: #f0f0f0;
+    border-radius: 5%;
+    background-color: #fafafa;
+}
