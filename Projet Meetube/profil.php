@@ -87,21 +87,16 @@
                     <div>
                         <h1 id="prefere">Vidéo préférée :</Video></h1>
                         <br><br><br>
-                            <!-- The iframe for the YouTube video -->
                             <iframe id="youtube-player" width="560" height="315" 
                                     src="" 
                                     frameborder="0" allowfullscreen></allowfullscreen></iframe>
                             <br></br>
-                            <!-- Input field to enter the new YouTube video URL -->
-                            <!--<input type="text" id="video-url-input" placeholder="Enter YouTube Video URL">
-                            <button id="change-video-button">Change Video</button>-->
                             
                             <form action="" method="POST">
                                 <input type="text" id="video-url-input" name="video-url-input" placeholder="Changer votre vidéo">
                                 <input type="submit" id="change-video-button" value="Changer">
                             </form>
 
-                            <!-- Script to handle dynamic URL change -->
                             <script>
                                 document.addEventListener('DOMContentLoaded', function() {
                                     // Récupérer l'URL de la vidéo depuis la variable PHP
@@ -125,23 +120,23 @@
                     </div>
                     
                         <div class="info-search">
-                            <form class="bouton-style" action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                            <form class="bouton-style" action="" method="POST">  
                                 <input type="submit" value="Recherche" name="Recherche">
                             </form>
                         </div>
                         <div>
-                            <form class="bouton-style" action="logout.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                            <form class="bouton-style" action="logout.php" method="POST">  
                                 <input type="submit" value="Deconnexion" name="logout">
                             </form>
                         </div>
                         <div>
-                            <form class="bouton-style" action="profil_modif.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                            <form class="bouton-style" action="profil_modif.php" method="POST">  
                                 <input type="submit" value="Modifier votre profil" name="modif">
                             </form>
                         </div>
                         <?php if ($_SESSION['sub'] == 2){?>
                         <div>
-                            <form class="bouton-style" action="chat_admin.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                            <form class="bouton-style" action="chat_admin.php" method="POST">  
                                 <input type="submit" value="Messagerie admin" name="chat_admin">
                             </form>
                         </div>
