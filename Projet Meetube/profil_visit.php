@@ -124,24 +124,24 @@
         <br>
         <div class="menu">
             <div class="info-profil">
-                <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                <form action="" method="POST">  
                     <input type="submit" value="Mon Profil" name="profil">
                 </form>
             </div>
 
             <div class="deco">
-                <form action="logout.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                <form action="logout.php" method="POST">  
                     <input type="submit" value="Deconnexion" name="logout">
                 </form>
             </div>
             <div class="info-search">
-                <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                <form action="" method="POST">  
                     <input type="submit" value="Recherche" name="recherche">
                 </form>
             </div>
             <?php if($_POST['mail'] != $_SESSION['mail'] && ($_SESSION['sub'] == 1 || $_SESSION['sub'] == 2)){?>
             <div class="chat">
-                <form action="profil.php" method="GET">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                <form action="profil.php" method="GET">  
                     <button type="submit" value="<?php echo $_POST['mail'] ?>" name="receive">Envoyer un message</button>
                 </form>
             </div>
