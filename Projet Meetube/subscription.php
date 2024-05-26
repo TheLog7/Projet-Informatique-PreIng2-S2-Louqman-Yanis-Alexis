@@ -41,12 +41,12 @@
         <h1> Page d'abonnement</h1>
             <br><br>
         <div class="info-profil">
-            <form action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+            <form action="" method="POST">  
                 <input type="submit" value="S'abonner ( 5 euros / 6 mois )" name="profil">
             </form>
         </div>
         <div class="deco">
-            <form action="logout.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+            <form action="logout.php" method="POST">  
                 <input type="submit" value="Deconnexion" name="logout">
             </form>
         </div>
