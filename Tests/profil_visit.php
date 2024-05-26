@@ -130,7 +130,7 @@
                     <input type="submit" value="Recherche" name="recherche">
                 </form>
             </div>
-            <?php if($_POST['mail'] != $_SESSION['mail'] && $_SESSION['sub'] == 1){?>
+            <?php if($_POST['mail'] != $_SESSION['mail'] && ($_SESSION['sub'] == 1 || $_SESSION['sub'] == 2)){?>
             <div class="chat">
                 <form action="profil.php" method="GET">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
                     <button type="submit" value="<?php echo $_POST['mail'] ?>" name="receive">Envoyer un message</button>

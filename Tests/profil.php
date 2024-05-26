@@ -140,11 +140,18 @@
                                 <input type="submit" value="Modifier votre profil" name="modif">
                             </form>
                         </div>
+                        <?php if ($_SESSION['sub'] == 2){?>
+                        <div>
+                            <form class="bouton-style" action="chat_admin.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+                                <input type="submit" value="Messagerie admin" name="chat_admin">
+                            </form>
+                        </div>
+                        <?php } ?>
                     </div>
             </div>
 
             <div class="right-column">
-                <?php if ($_SESSION['sub'] == 1) {?>
+                <?php if ($_SESSION['sub'] == 1 || $_SESSION['sub'] == 2) {?>
                 <div class='header'>
                     <div class='page-chat'>
                         <h1 id="moving-text">

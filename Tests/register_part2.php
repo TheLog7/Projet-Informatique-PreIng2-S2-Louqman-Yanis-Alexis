@@ -40,7 +40,7 @@ if (isset($_POST['sent'])){
     $users[$id]['age'] = calculerAge($_POST['birthday']);
     $users[$id]['wish'] = $_POST['wish'];
     file_put_contents('./Comptes/users.json', json_encode($users));
-    header("Location:test.php");
+    header("Location:profil.php");
 }
 
     

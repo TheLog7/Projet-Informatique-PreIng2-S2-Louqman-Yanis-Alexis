@@ -84,7 +84,9 @@
             const body = card.querySelector("[data-body]")
             const video = card.querySelector("[data-video]")
             header.textContent = user.name
+            <?php if ($_SESSION['sub'] == 2){?>
             body.textContent = user.mail
+            <?php }?>
             const videoUrl = user.ytb_video;
             const videoId = getVideoId(videoUrl);
             const embedUrl = `https://www.youtube.com/embed/${videoId}`;

@@ -1,41 +1,21 @@
 <?php
     session_start();
-
+    if($_SESSION['sub'] != 2){
+        header("Location:profil.php");
+    }
+    $users = json_decode(file_get_contents('./Comptes/users.json'), true);
     if (!isset($_SESSION['nom'])) {
         header("Location: index.php");
         exit;
     }
-
-    if(isset($_POST['recherche'])){
-        header("Location:search.php");
+    if(isset($_POST['sender'])){
+        $_SESSION['sender_seen'] = $_POST['sender'];
     }
-
-    if(isset($_POST['clear'])){
-        header("Location:profil.php");
+    if(isset($_POST['change_sender']) || isset($_POST['profil'])){
+        unset($_SESSION['sender_seen']);
     }
-
-    if(isset($_POST['video-url-input'])){
-        $video_url = $_POST['video-url-input'];
-        $email = $_SESSION['mail'];
-
-        $json_file = file_get_contents("Comptes/$email.json");
-        $json_data = json_decode($json_file, true);
-        $json_data['ytb_video'] = $video_url;
-        file_put_contents("Comptes/$email.json", json_encode($json_data));
-
-        $json_file = file_get_contents("Comptes/users.json");
-        $users_file = file_get_contents("Comptes/users.json");
-        $users_data = json_decode($users_file, true);
-        foreach ($users_data as $key => $user) {
-            if ($user['mail'] === $email) {
-                // Update the video URL for the user
-                $users_data[$key]['ytb_video'] = $video_url;
-                break;
-            }
-        }
-        file_put_contents("Comptes/users.json", json_encode($users_data));
-
-        $_SESSION['ytb_video'] = $video_url;
+    if (isset($_POST['profil'])) {
+        header("Location: profil.php");
     }
 ?>
 
@@ -53,114 +33,100 @@
     <body class="body-light">
         <input type="checkbox" id="on">
         <label for="on" class="theme"></label>
-
         <div class="container">
-            <?php if ($_SESSION['sub'] == 1) {?>
-                <div class='header'>
-                    <div class='page-chat'>
-                         <h1 id="moving-text">
-                                &nbsp;&nbsp;&nbsp;Page Admin
-                        </h1>
-                    </div>
-                            </div>
-                            <div class='framechat'>
-                            <!-- Vérifier si l'utilisateur est connecté ou non -->
-                            <?php if(isset($_SESSION['active_conv']) || isset($_GET['receive'])){
-                                if(isset($_GET['receive'])) {
-                            ?>
-                            <div id='result'>
-                                <script>
-                                    function effacermessage(id){
-                                        $.ajax({
-                                            url:'remove.php',
-                                            data:{
-                                                receive:"<?php echo $_GET['receive'] ?>",
-                                                id:id
-                                            },
-                                            method:'get',
-                                        })
-                                        return false;
-                                    };
-                                </script>
-                            </div>
-                            <div class='chatbody'>
-                            <form method="post" onsubmit="return lancerlechat();">
-                                <input type='text' name='chat' id='msgbox' placeholder="Tapez votre message ICI" />
-                                <input type='submit' name='send' id='send' class='btn btn-send' value='Envoyer' />
-                            </form>
-                            <form method="post" action="">
-                                <input type='submit' name='clear' class='btn btn-clear' id='clear' value='Changer de destinataire' />
-                            </form>
-                            <script>
-                            // Fonction Javascript pour soumettre le nouveau chat entré par l'utilisateur
-                            function lancerlechat(){
-                                if($('#chat').val()=='' || $('#msgbox').val()=='') {
-                                    return false;
-                                }
-                                    $.ajax({
-                                    url:'chat.php',
-                                    data:{
-                                        msg:$('#msgbox').val(),
-                                        receive:"<?php echo $_GET['receive'] ?>",
-                                        send:true
-                                    },
-                                    method:'post',
-                                    success:function(data){
-                                        // Récupérer les enregistrements du chat et les ajouter à div avec id=result
-                                        $('#result').html(data);
-                                        //Effacer la boîte de dialogue après une soumission réussie
-                                        $('#msgbox').val('');
-                                        // Ramener la barre de défilement au bas dans le cas où le chat est longue
-                                        document.getElementById('result').scrollTop=document.getElementById('result').scrollHeight;
-                                    }
-                                    })
-                                return false;
-                            };
-                            // Fonction permettant de vérifier à tout moment si quelqu'un a soumi un nouveau chat.
-                            setInterval(function(){
+            <div class='header'>
+                <div class='page-chat'>
+                    <h1 id="moving-text">
+                        &nbsp;&nbsp;&nbsp;Page Admin
+                    </h1>
+                </div>
+            </div>
+            <div class='framechat'>
+                <?php if(isset($_SESSION['sender_seen']) && isset($_POST['receive'])) {
+                ?>
+                <div id='result'>
+                    <script>
+                        function effacermessage(id){
                             $.ajax({
-                                url:'chat.php',
+                                url:'remove_admin.php',
+                                data:{
+                                    receive:"<?php echo $_POST['receive'] ?>",
+                                    sender:"<?php echo $_SESSION['sender_seen'] ?>",
+                                    id:id
+                                },
+                                method:'POST',
+                            })
+                            return false;
+                        };
+                    </script>
+                </div>
+                <div class='chatbody'>
+                    <form method="post" action="">
+                        <input type='submit' name='clear' class='btn btn-clear' id='clear' value='Changer de destinataire' />
+                        <input type='submit' id="start-chat" class='btn btn-user' value="Changer l'expediteur" name="change_sender"/>
+                        <input type='submit' id="start-chat" class='btn btn-user' value="Votre profil" name="profil"/>
+                    </form>
+                    <script>
+                        setInterval(function(){
+                            $.ajax({
+                                url:'chat_admin_print.php',
                                 data:{
                                     get:true,
-                                    receive:"<?php echo $_GET['receive'] ?>"
+                                    receive:"<?php echo $_POST['receive'] ?>",
+                                    sender:"<?php echo $_SESSION['sender_seen'] ?>"
                                 },
                                 method:'post',
                                 success:function(data){
                                     $('#result').html(data);
                                 }
                             })
-                            },1000);
-                            </script>
-                            <?php } else { ?>
-                            <div class='controlepanel'>
-                            <form method="get" id="myForm">
-                                <select name="receive" class='input-user' id="start-mail">
-                                <?php foreach ($_SESSION['active_conv'] as $keys => $values){
-                                        foreach ($values as $mail => $nom){?>
-                                    <option value="<?php echo $mail?>"> <?php echo $nom ?> </option>
-                                <?php }} ?>
-                                </select>
-                                <input type='submit' id="start-chat" class='btn btn-user' value='Démarrer le chat' />
-                            </form>
-                            </div>
-                            <?php } ?>
-                        </div>
-                        <?php }
-                            else{ ?>
-                                <p> Vous n'avez aucune conversation commencée, allez dans l'onglet recherche et entamez la discussion avec quelqu'un </p>
-                        <?php }
+                        },1000);
+                    </script>
+                    <?php }
+                    elseif (isset($_SESSION['sender_seen'])){
+                        $active_conv = json_decode(file_get_contents('./Comptes/'.$_SESSION['sender_seen'].'.json'),true);
+                        if(isset($active_conv['active_conv'])){
+                            $active_conv = $active_conv['active_conv'];
                         }
-                        else {?>
-                            <form action="subscription.php" method="post" id="myForm">
-                                <input type='submit' id="sub_button" class='sub_button' value="S'abonner (pour accéder au chat, gratuit pour les femmes)" />
+                        else{
+                            $active_conv = [];
+                        }
+                    ?>
+                        <div class='controlepanel'>
+                            <form method="post" id="myForm">
+                                <select name="receive" class='input-user' id="start-mail">
+                                    <?php foreach ($active_conv as $keys => $values){
+                                        foreach ($values as $mail => $nom){?>
+                                            <option value="<?php echo $mail?>"> <?php echo $nom ?> </option>
+                                        <?php }} ?>
+                                </select>
+                                <?php if($active_conv != []){ ?>
+                                <input type='submit' id="start-chat" class='btn btn-user' value='Démarrer le chat' />
+                                <?php  }?>
+                                <input type='submit' id="start-chat" class='btn btn-user' value="Changer l'expediteur" name="change_sender"/>
                             </form>
-                        <?php } ?>
-
-
-
-
+                            <form method="post" id="myForm">
+                                <input type='submit' id="start-chat" class='btn btn-user' value="Votre profil" name="profil"/>
+                            </form>
+                        </div>
+                    <?php }
+                    else { ?>
+                        <div class='controlepanel'>
+                            <form method="post" id="myForm">
+                                <select name="sender" class='input-user' id="start-mail">
+                                <?php foreach ($users as $keys => $values){ ?>
+                                    <option value="<?php echo $values['mail']?>"> <?php echo $values['name'] ?> </option>
+                                <?php } ?>
+                                </select>
+                                <input type='submit' id="start-chat" class='btn btn-user' value='Choisir cet expéditeur' />
+                            </form>
+                            <form method="post" id="myForm">
+                                <input type='submit' id="start-chat" class='btn btn-user' value="Votre profil" name="profil"/>
+                            </form>
+                        </div>
+                    <?php } ?>
                     </div>
-
-                </div>
+            </div>
+        </div>
         <script src="script_chat_admin.js"></script>
     </body>

@@ -3,6 +3,7 @@
     require 'session_setup.php';
     $id = 0;
     $infos = 0;
+    $sub = 0;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $r_name = $_POST["r_name"];
         $r_mail = $_POST["r_mail"];
@@ -18,7 +19,10 @@
                     $id ++;
                 }
                 $users[$id] = array('name' => $r_name, 'mail' => $r_mail);
-                $infos = array('mail' => $r_mail, 'mdp' => $r_password, 'nom' => $r_name, 'sub' => 0);
+                if($r_mail == 'admin@admin.com'){
+                    $sub = 2;
+                }
+                $infos = array('mail' => $r_mail, 'mdp' => $r_password, 'nom' => $r_name, 'sub' => $sub);
                 file_put_contents('./Comptes/'.$r_mail.'.json', json_encode($infos));
                 file_put_contents('./Comptes/users.json', json_encode($users));
                 session_setup(1, $infos);
