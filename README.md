@@ -29,3 +29,5 @@ Cependant, il manque quelques fonctionnalités (souvent par manque de temps, nou
   - Notifier les administrateurs lors de signalements
 
   - Management de l'administrateur pour bloquer les utilisateurs (bannir un utilisateurs par exemple)
+
+### de Alexis Vannereau, Louqman Ba, Yanis Djermoune. 
