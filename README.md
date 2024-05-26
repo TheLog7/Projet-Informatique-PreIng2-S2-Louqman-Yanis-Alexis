@@ -31,4 +31,5 @@ Cependant, il manque quelques fonctionnalités (souvent par manque de temps, nou
 
   - Management de l'administrateur pour bloquer les utilisateurs (bannir un utilisateurs par exemple)
 
+PS : Les commits qui ont été effectués après l'heure de rendu ont pour seul et unique effet de retirer des commentaires inutiles.
 ### de Alexis Vannereau, Louqman Ba, Yanis Djermoune. 
