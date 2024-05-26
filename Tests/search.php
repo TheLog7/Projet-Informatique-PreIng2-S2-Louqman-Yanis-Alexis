@@ -45,7 +45,7 @@
     <br>
 
     <div class="search-wrapper">
-    <input type="search" id="search" data-search>
+    <input type="search" id="search" placeholder="Entrez le compte que vous recherchez" data-search>
     </div>
 
     <div class="user-cards" data-user-cards-container></div>

@@ -66,6 +66,7 @@ if (isset($_POST['sent'])){
             <form class="login-bloc" action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
                 <label>Vous etes :</label>
                 <select name="genre" required>
+                    <option value="" disabled selected hidden>Sélectionnez une option</option>
                     <option value="homme"> un homme</option>
                     <option value="femme">une femme</option>
                 </select>
@@ -84,15 +85,17 @@ if (isset($_POST['sent'])){
                 <br>
                 <label>Votre situation amoureuse:</label>
                 <select name="situation" required>
-                    <option value="célibataire"> Célibataire </option>
-                    <option value="en couple"> En couple </option>
-                    <option value="veuf/veuve"> Veuf/Veuve </option>
+                    <option value="" disabled selected hidden>Sélectionnez une option</option>
+                    <option value="Célibataire"> Célibataire </option>
+                    <option value="En couple"> En couple </option>
+                    <option value="Veuf/Veuve"> Veuf/Veuve </option>
+                    <option value="Divorce"> Divorcé </option>
                 </select>
                 <br>
                 <label>Votre taille en cm :</label>
                 <input type="number" name="height" >
                 <br>
-                <label>Votre poids :</label>
+                <label>Votre poids en kg:</label>
                 <input type="number" name="weight" >
                 <br>
                 <label>La couleur de vos yeux :</label>
@@ -102,9 +105,11 @@ if (isset($_POST['sent'])){
                 <input type="text" name="hairs">
                 <label>Je cherche :</label>
                 <select name="wish" required>
+                    <option value="" disabled selected hidden>Sélectionnez une option</option>
                     <option value="Serieux"> Sérieux </option>
                     <option value="Pas de prise de tete"> Pas de prise de tete </option>
-                    <option value="je ne sais pas"> Coup d'un soir </option>
+                    <option value="Ne sais pas"> Je ne sais pas </option>
+                    <option value="Coup d'un soir"> Coup d'un soir </option>
                 </select>
                 <br>
                 <input id="valider" type="submit" value="Valider" name="sent">

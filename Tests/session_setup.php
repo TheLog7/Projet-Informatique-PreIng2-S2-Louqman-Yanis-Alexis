@@ -6,6 +6,7 @@ function session_setup($key, $file)
         $_SESSION['mail'] = $file['mail'];
         $_SESSION['nom'] = $file['nom'];
         $_SESSION['mdp'] = $file['mdp'];
+        $_SESSION['sub'] = $file['sub'];
     }
     if($key == 2 || $key == 3){
         $_SESSION['genre'] = $file['genre'];
@@ -20,6 +21,8 @@ function session_setup($key, $file)
         $_SESSION['situation'] = $file['situation'];
         $_SESSION['hairs'] = $file['hairs'];
         $_SESSION['wish'] = $file['wish'];
-
+    }
+    if ($key == 3 && isset($file['active_conv'])){
+        $_SESSION['active_conv'] = $file['active_conv'];
     }
 }

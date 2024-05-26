@@ -121,7 +121,7 @@
   padding: 5px; /* Add padding to create space between border and content */
 }
 
-.info-profil input, .info-search input, .deco input{
+.info-profil input, .info-search input, .deco input, .chat button{
   background-color: var(--meetube_color);
     color: #fff;
     font-size: 12px;

@@ -18,7 +18,7 @@
                     $id ++;
                 }
                 $users[$id] = array('name' => $r_name, 'mail' => $r_mail);
-                $infos = array('mail' => $r_mail, 'mdp' => $r_password, 'nom' => $r_name);
+                $infos = array('mail' => $r_mail, 'mdp' => $r_password, 'nom' => $r_name, 'sub' => 0);
                 file_put_contents('./Comptes/'.$r_mail.'.json', json_encode($infos));
                 file_put_contents('./Comptes/users.json', json_encode($users));
                 session_setup(1, $infos);

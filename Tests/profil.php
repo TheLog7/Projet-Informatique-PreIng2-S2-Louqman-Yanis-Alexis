@@ -61,14 +61,26 @@
                         <h1>Bonjour, <?= $_SESSION['nom']?></h1>
                         <p><b>Sexe : <?= $_SESSION['genre']?></b></p>
                         <p><b><?= $_SESSION['age']?>&nbsp;ans</b></p>
+                        <?php if ($_SESSION['work'] != ""){?>
                         <p><b><?= $_SESSION['work']?></b></p>
+                        <?php } ?>
+                        <?php if ($_SESSION['address'] != ""){?>
                         <p><b>habite à&nbsp;<?= $_SESSION['address']?></b></p>
+                        <?php } ?>
+                        <?php if ($_SESSION['height'] != ""){?>
                         <p><b><?= $_SESSION['height']?>cm</b></p>
+                        <?php } ?>
+                        <?php if ($_SESSION['weight'] != ""){?>
                         <p><b><?= $_SESSION['weight']?>kg</b></p>
-                        <p><b>a les yeux&nbsp;<?= $_SESSION['eyes']?></b></p>
+                        <?php } ?>
+                        <?php if ($_SESSION['eyes'] != ""){?>
+                        <p><b>A les yeux&nbsp;<?= $_SESSION['eyes']?></b></p>
+                        <?php } ?>
                         <p><b><?= $_SESSION['situation']?></b></p>
+                        <?php if ($_SESSION['hairs'] != ""){?>
                         <p><b><?= $_SESSION['hairs']?></b></p>
-                        <p><b>cherche :&nbsp;<?= $_SESSION['wish']?></b></p>
+                        <?php } ?>
+                        <p><b>Cherche :&nbsp;<?= $_SESSION['wish']?></b></p>
                     </div>
                 </div>
                 <div class="right">
@@ -126,6 +138,7 @@
             </div>
 
             <div class="right-column">
+                <?php if ($_SESSION['sub'] == 1) {?>
                 <div class='header'>
                     <div class='page-chat'>
                         <h1 id="moving-text">
@@ -135,7 +148,9 @@
                     </div>
                     <div class='framechat'>
                     <!-- Vérifier si l'utilisateur est connecté ou non -->
-                    <?php if(isset($_GET['receive'])) { ?>
+                    <?php if(isset($_SESSION['active_conv']) || isset($_GET['receive'])){
+                        if(isset($_GET['receive'])) {
+                    ?>
                     <div id='result'>
                         <script>
                             function effacermessage(id){
@@ -202,13 +217,33 @@
                     <?php } else { ?>
                     <div class='controlepanel'>
                     <form method="get" id="myForm">
-                        <input type='text' class='input-user' id="start-mail" placeholder="Entrez le mail du destinataire" name='receive' />
+                        <select name="receive" class='input-user' id="start-mail">
+                        <?php foreach ($_SESSION['active_conv'] as $keys => $values){
+                                foreach ($values as $mail => $nom){?>
+                            <option value="<?php echo $mail?>"> <?php echo $nom ?> </option>
+                        <?php }} ?>
+                        </select>
                         <input type='submit' id="start-chat" class='btn btn-user' value='Démarrer le chat' />
                     </form>
                     </div>
                     <?php } ?>
                 </div>
+                <?php }
+                    else{ ?>
+                        <p> Vous n'avez aucune conversation commencée, allez dans l'onglet recherche et entamez la discussion avec quelqu'un </p>
+                <?php }
+                }
+                else {?>
+                    <form action="subscription.php" method="post" id="myForm">
+                        <input type='submit' id="sub_button" class='sub_button' value="S'abonner" />
+                    </form>
+                <?php } ?>
+
+
+
+
             </div>
+
         </div>
         <script src="script_profil.js"></script>
     </body>
