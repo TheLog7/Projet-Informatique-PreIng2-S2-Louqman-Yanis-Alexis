@@ -1,0 +1,16 @@
+body{margin:0; padding: 0; font-family: 'Open Sans', sans-serif, arial; font-size: 14px; background: #FFD700; overflow: hidden;}
+*{font-family: 'Open Sans', sans-serif, arial; font-size: 14px; color:#555; }
+.framechat{max-width:1024px; width:100%; margin:auto;}
+.header{background: black}
+.header h1{max-width:1024px; width:100%; margin:0 auto; padding:10px 0; font-size: 20px; color: #fff; text-align: center; font-weight: 300}
+.controlepanel{margin: auto; text-align: center; margin-top: 24%}
+.input-user{padding: 10px; border: solid 2px #c9c9c9; width:250px}
+.btn {border:1px solid #314179; color:#ffffff;}
+.btn-user{padding:9px 30px; position: relative; top: 0px; font-size: 16px; font-weight: 300; background-color:#637aad}
+#result{max-width:1024px; width:100%; padding:10px; background: #f1f1f1; max-height: 80%; overflow-y:auto;}
+.chatbody{position: fixed; bottom: 0; width: 100%}
+.chatbody form{margin: 0}
+#msgbox{padding: 10px 10px; width: 56%; height: 60px; margin-bottom: 7px;}
+.btn-send{font-size: 20px; padding: 15px; font-weight: 300; background-color:green}
+.btn-clear{padding: 15px 25px; font-size: 20px; font-weight: 300; background-color:red}
+.logout{float: right; color: #fff; text-decoration: none; font-size: 15px}
