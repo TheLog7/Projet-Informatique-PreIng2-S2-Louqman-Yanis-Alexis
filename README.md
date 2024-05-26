@@ -19,6 +19,7 @@ Notre site propose plusieurs fonctionnalités :
   -  📝 Page d'abonnement (qui propose un bouton pour s'inscrire simplement)
     
   -  🛠️ Profil Administrateur (le compte "admin@admin.com" possède les droits administrateurs)
+    /!\ Vous devez le créer /!\
 
 Cependant, il manque quelques fonctionnalités (souvent par manque de temps, nous pensons savoir les faire) :
 
