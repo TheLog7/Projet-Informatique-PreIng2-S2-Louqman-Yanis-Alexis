@@ -32,13 +32,13 @@
     <br>
     <br>
     <div class="info-profil">
-        <form class="bouton-style" action="" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+        <form class="bouton-style" action="" method="POST">  
             <input type="submit" value="Mon Profil" name="profil">
         </form>
     </div>
     <br>
     <div>
-        <form class="bouton-style" action="logout.php" method="POST">  <!--on ne mets plus rien au niveau de l'action , pour pouvoir envoyé les données  dans la même page -->
+        <form class="bouton-style" action="logout.php" method="POST">  
             <input type="submit" value="Deconnexion" name="logout">
         </form>
     </div>
